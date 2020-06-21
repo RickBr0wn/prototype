@@ -2,7 +2,7 @@ const express = require('express')
 const cookie = require('cookie-parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const middlewares = require('./middlewares')
+const fallbacks = require('./fallbacks')
 
 const app = express()
 
@@ -24,8 +24,8 @@ mongoose.connect(
 
 // app.use('/auth', authRouter)
 
-app.use(middlewares.notFound)
-app.use(middlewares.errorHandler)
+app.use(fallbacks.notFound)
+app.use(fallbacks.errorHandler)
 
 app.listen(5000, () => {
   console.log(`🌎 => http server`)
